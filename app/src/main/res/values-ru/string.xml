@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="gender_male">Муж.</string>
+    <string name="gender_female">Жен.</string>
+    <string name="age">Возраст</string>
+    <string name="lostconnection">Проблема с интернет-соединением.</string>
+</resources>
