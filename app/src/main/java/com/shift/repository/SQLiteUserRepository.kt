@@ -12,7 +12,6 @@ class SQLiteUserRepository(private val userDao: UserDao) {
     fun saveUsers(users: List<UserEntity>){
         userDao.saveUsers(users)
     }
-
     fun deleteAllUsers(){
         userDao.deleteAllUsers()
     }

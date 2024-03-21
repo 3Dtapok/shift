@@ -5,18 +5,11 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.ImageView
 import android.widget.TextView
-import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.RecyclerView
 import com.shift.R
-import com.shift.fragments.CardListsFragment
-import com.shift.fragments.FullInfoFragment
 import com.shift.model.User
-import com.shift.model.UserService
 import com.squareup.picasso.Picasso
 
-interface OnUserClickListener {
-    fun onUserClicked(user: User)
-}
 
 class UserAdapter(private val userService: List<User>, private val listener: (User) -> Unit): RecyclerView.Adapter<UserAdapter.UserViewHolder>() {
     class UserViewHolder(view: View): RecyclerView.ViewHolder(view){

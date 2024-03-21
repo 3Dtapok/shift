@@ -17,7 +17,6 @@ import com.shift.db.Appdb
 import com.shift.entity.UserEntity
 import com.shift.model.User
 import com.shift.model.UserResponse
-import com.shift.model.UserService
 import com.shift.repository.RandomUserApi
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
@@ -28,14 +27,10 @@ import retrofit2.Response
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-
 class CardListsFragment : Fragment() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var userDao: UserDao
-    private val userService = UserService()
-
-
 
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
@@ -57,7 +52,6 @@ class CardListsFragment : Fragment() {
             refreshUsers()
         }
 
-
         lifecycleScope.launch {
             val users: List<UserEntity> = withContext(Dispatchers.IO) { userDao.getAllUsers() }
             if (users.size < 20) {
@@ -68,18 +62,14 @@ class CardListsFragment : Fragment() {
             }
         }
 
-
-
-
     }
 
     private fun refreshUsers() {
         lifecycleScope.launch(Dispatchers.IO) {
-            userDao.deleteAllUsers() // Очистка базы данных
-            fetchUsersFromApiAndSave() // Загрузка и сохранение новых пользователей
+            userDao.deleteAllUsers()
+            fetchUsersFromApiAndSave()
         }
     }
-
 
     private fun setupRecyclerView(users : List<User>){
         recyclerView.adapter = UserAdapter(users){ user ->
@@ -129,7 +119,6 @@ class CardListsFragment : Fragment() {
 
         })
     }
-
 
     private fun InternetErrorToast() {
         activity?.runOnUiThread {
